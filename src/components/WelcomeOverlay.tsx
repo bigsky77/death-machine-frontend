@@ -45,14 +45,14 @@ function WelcomeOverlay({ onClose }) {
           id="outlined-size-small"
           defaultValue="simon@bigsky.gg"
           size="small"
-          sx={{pl: 0, pr: 1, top: 160}}
+          sx={{pl: 0, pr: 1, top: 120}}
         />
         <TextField
           label="Starknet Address"
           id="outlined-size-small"
           defaultValue="0x1234567890"
           size="small"
-          sx={{pl: 0, pr: 1, top: 160}}
+          sx={{pl: 0, pr: 1, top: 120}}
         />
         </Box>
         <Button variant="contained" onClick={onClose}>
