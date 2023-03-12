@@ -20,11 +20,8 @@ export default function Layout({animationFrame,
                                 frames,
                                 pc,
                                 shipSelected,
-                                updateShipSelected,
-                                stars,
-                                enemies,
-                                selectSpaceship, 
-                                generateGameBoard, 
+                                selectShip,
+                                generateGameBoard,
                                 onProgramsChange, 
                                 programs, 
                                 midScreenControlProps,
@@ -107,7 +104,7 @@ export default function Layout({animationFrame,
                                     handleSlideChange={midScreenControlHandleSlideChange} />
             <InstructionConsole pc={pc}
                                 shipSelected={shipSelected}
-                                updateShipSelected={updateShipSelected}
+                                selectShip={selectShip}
                                 onShipInitPositionsChange={onShipInitPositionsChange}
                                 shipInitPositions={shipInitPositions}
                                 onProgramsChange={onProgramsChange}
