@@ -14,7 +14,8 @@ import InstructionConsole from './InstructionConsole/InstructionConsole'
 import EventReader from './EventReader'
 import MidScreenControl from './ui_settings/MidScreenControl'
 import { useAccount, useStarknetExecute, useTransactionReceipt } from "@starknet-react/core";
-import   WelcomeApp  from "./WelcomeOverlay";
+import WelcomeApp  from "./WelcomeOverlay";
+import BlockExplorer  from "./BlockExplorer";
 
 export default function Layout({animationFrame,
                                 frames,
@@ -83,43 +84,25 @@ export default function Layout({animationFrame,
     }
   
   return (  
-    <>
-      <ThemeProvider theme={theme}>
-      <Box sx={{height: {md: "100vh"}, p: 10, pl: 24, backgroundColor: '#2d4249ff', border: '1px grey'}}>
-          <Grid container 
-                spacing={1} 
-                sx={{ height: 800, width: 1400, p: 14, pl: 20, border: '1px grey' }}
-                justifyContent="center" 
-                alignItems="center" 
-                display="flex" 
-                flexDirection="column" 
-                columnSpacing={0} gap={1}>
-            <WelcomeApp generateBoard={generateBoard}/>
-            <MainController generateGameBoard={generateGameBoard} handleClickSubmit={handleClickSubmit}/>
-            <MidScreenControl runnable={midScreenControlProps.runnable}
-                                    animationFrame={midScreenControlProps.animationFrame}
-                                    n_cycles={midScreenControlProps.n_cycles}
-                                    animationState={midScreenControlProps.animationState}
-                                    handleClick={midScreenControlHandleClick}
-                                    handleSlideChange={midScreenControlHandleSlideChange} />
-            <InstructionConsole pc={pc}
-                                shipSelected={shipSelected}
-                                selectShip={selectShip}
-                                onShipInitPositionsChange={onShipInitPositionsChange}
-                                shipInitPositions={shipInitPositions}
-                                onProgramsChange={onProgramsChange}
-                                programs={programs}/>
-            <Grid sx={{ width: 530, height: 500, border: '1px grey' }}>
-            <GameGrid animationFrame={animationFrame}
-                      frames={frames}
-                      shipSelected={shipSelected}
-                      shipInitPositions={shipInitPositions}
-                      />
-            </Grid>
-          </Grid>
-        </Box>
-      </ThemeProvider>
-    </> 
+ <>
+  <ThemeProvider theme={theme}>
+    <Box sx={{ height: { md: "100vh" }, p: 10, pl: 24, backgroundColor: '#2d4249ff', border: '1px grey', position: 'relative' }}>
+      <BlockExplorer/>
+      <Grid container spacing={1} sx={{ height: 800, width: 1400, p: 14, pl: 20, border: '1px grey' }} justifyContent="center" alignItems="center" display="flex" flexDirection="column" columnSpacing={0} gap={1}>
+        <WelcomeApp generateBoard={generateBoard} />
+        <MainController generateGameBoard={generateGameBoard} handleClickSubmit={handleClickSubmit} />
+        <MidScreenControl runnable={midScreenControlProps.runnable} animationFrame={midScreenControlProps.animationFrame} n_cycles={midScreenControlProps.n_cycles} animationState={midScreenControlProps.animationState} handleClick={midScreenControlHandleClick} handleSlideChange={midScreenControlHandleSlideChange} />
+        <InstructionConsole pc={pc} shipSelected={shipSelected} selectShip={selectShip} onShipInitPositionsChange={onShipInitPositionsChange} shipInitPositions={shipInitPositions} onProgramsChange={onProgramsChange} programs={programs} />
+        <Grid sx={{ width: 530, height: 500, border: '1px grey' }}>
+          <GameGrid animationFrame={animationFrame} frames={frames} shipSelected={shipSelected} shipInitPositions={shipInitPositions} />
+        </Grid>
+      </Grid>
+    </Box>
+  </ThemeProvider>
+</>
+
+
+
   );
 }
 
