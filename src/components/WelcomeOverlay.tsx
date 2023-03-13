@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Box, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Typography } from '@mui/material';
-import gruvMachine from '../../public/gruvbox-smol.png';
+import gruvMachine from '../../public/gameboard.png';
 import Image from 'next/image'
+import { BLANK_COLOR } from "../constants/constants";
 
 function WelcomeOverlay({ onClose }) {
 
@@ -31,7 +32,7 @@ function WelcomeOverlay({ onClose }) {
         sx={{
           width: '80%',
           maxWidth: '500px',
-          backgroundColor: 'white',
+          backgroundColor: '#f2f1ed',
           borderRadius: 4,
           padding: 4,
           display: 'flex',
@@ -46,6 +47,7 @@ function WelcomeOverlay({ onClose }) {
           <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 4 }}>
             DEATH-MACHINE 💀 ⚙️
           </Typography>
+          <Image src={gruvMachine} alt="gruvMachine" width={400} height={200} />
           <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 6 }}>
             Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain. We are currently in closed beta testing.
           </Typography>
