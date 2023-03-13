@@ -31,7 +31,7 @@ function WelcomeOverlay({ onClose, isMobile}) {
   >
     <Box
       sx={{
-        width: '50%',
+        width: '95%',
         maxWidth: '500px',
         backgroundColor: '#f2f1ed',
         borderRadius: 4,
@@ -43,16 +43,17 @@ function WelcomeOverlay({ onClose, isMobile}) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         boxShadow: '10px 10px 0px #000000',
+        margin: '0 auto',
         '@media (min-width: 600px)': {
-          width: '50%',
+          width: '100%',
         },
       }}
     >
       <Box sx={{}}>
-        <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 2, ml: 12}}>
+        <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 2, ml: 2, textDecoration: 'underline double' }}>
           DEATH-MACHINE ️
         </Typography>
-        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 2, ml: 4 }}>
+        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 2, ml: 2 }}>
           Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain.
         </Typography>
       </Box>
@@ -60,10 +61,10 @@ function WelcomeOverlay({ onClose, isMobile}) {
         <Image src={deathMachine} alt="deathMachine" width={200} height={200} style={{border: '2px solid #ffffff', borderRadius: '50%', boxShadow: '0px 0px 30px #ffffff'}} />
       </Box>
       <Box sx={{}}>
-        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 4, ml: 4 }}>
+        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 4, ml: 2 }}>
           We are currently in closed beta testing. To learn more about the project and join our community, please join our Telegram chat!
         </Typography>
-        <Button variant="contained" onClick={openTelegram} sx={{ backgroundColor: '#FC72FF', color: 'white', fontWeight: 'bold', ml: 14 }}>
+        <Button variant="contained" onClick={openTelegram} sx={{ backgroundColor: '#FC72FF', color: 'white', fontWeight: 'bold', ml: 8 }}>
           Join Telegram Chat
         </Button>
       </Box>
