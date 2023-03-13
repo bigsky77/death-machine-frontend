@@ -113,10 +113,10 @@ export default function Layout({animationFrame,
       }}
     >
       {isMobile ? (
-        <WelcomeApp generateBoard={generateBoard} />
+        <WelcomeApp generateBoard={generateBoard} isMobile={isMobile} />
       ) : (
         <>
-        <WelcomeApp generateBoard={generateBoard} />
+        <WelcomeApp generateBoard={generateBoard} isMobile={isMobile}/>
           <BlockExplorer />
           <Grid container spacing={1} sx={{ height: 800, width: 1400, p: 14, pl: 20, border: '1px grey' }} justifyContent="center" alignItems="center" display="flex" flexDirection="column" columnSpacing={0} gap={1}>
             <WelcomeApp generateBoard={generateBoard} />

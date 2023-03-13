@@ -6,7 +6,7 @@ import gruvMachine from '../../public/gameboard.png';
 import Image from 'next/image'
 import { BLANK_COLOR } from "../constants/constants";
 
-function WelcomeOverlay({ onClose }) {
+function WelcomeOverlay({ onClose, isMobile}) {
 
   const openTelegram = () => {
     window.open('https://t.me/+o2ukH44rqIczMjgx', '_blank');
@@ -38,7 +38,6 @@ function WelcomeOverlay({ onClose }) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundImage: `url(${gruvMachine})`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
         }}
@@ -47,10 +46,10 @@ function WelcomeOverlay({ onClose }) {
           <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 4 }}>
             DEATH-MACHINE 💀 ⚙️
           </Typography>
-          <Image src={gruvMachine} alt="gruvMachine" width={400} height={200} />
           <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 6 }}>
             Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain. We are currently in closed beta testing.
           </Typography>
+          {isMobile ? <Image src={gruvMachine} alt="gruvMachine" width={300} height={200} /> : ""}
           <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 6 }}>
             To learn more about the project and join our community, please join our Telegram chat!
           </Typography>
