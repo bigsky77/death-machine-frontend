@@ -60,6 +60,7 @@ function WelcomeOverlay({ onClose }) {
     </Box>
   );
 };
+
 export default function WelcomeApp({generateBoard}: props) {
   const [showWelcome, setShowWelcome] = useState(true);
 
