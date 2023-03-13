@@ -31,7 +31,7 @@ function WelcomeOverlay({ onClose, isMobile}) {
   >
     <Box
       sx={{
-        width: '80%',
+        width: '50%',
         maxWidth: '500px',
         backgroundColor: '#f2f1ed',
         borderRadius: 4,
@@ -43,25 +43,28 @@ function WelcomeOverlay({ onClose, isMobile}) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         boxShadow: '10px 10px 0px #000000',
+        '@media (min-width: 600px)': {
+          width: '50%',
+        },
       }}
     >
       <Box sx={{}}>
         <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 2, ml: 12}}>
           DEATH-MACHINE ️
         </Typography>
-        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 6 }}>
-          Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain. We are currently in closed beta testing.
+        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 2, ml: 4 }}>
+          Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain.
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 4 }}>
-        <Image src={deathMachine} alt="deathMachine" width={200} height={200} sx={{border: '2px solid #ffffff', borderRadius: '50%', boxShadow: '0px 0px 30px #ffffff'}} />
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 4,  }}>
+        <Image src={deathMachine} alt="deathMachine" width={200} height={200} style={{border: '2px solid #ffffff', borderRadius: '50%', boxShadow: '0px 0px 30px #ffffff'}} />
       </Box>
       <Box sx={{}}>
-        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 4 }}>
-          To learn more about the project and join our community, please join our Telegram chat!
+        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 4, ml: 4 }}>
+          We are currently in closed beta testing. To learn more about the project and join our community, please join our Telegram chat!
         </Typography>
-        <Button variant="contained" onClick={openTelegram} sx={{ backgroundColor: '#00bfff', color: 'white', fontWeight: 'bold', ml: 12 }}>
-          Join Telegram Chat💀 ⚙
+        <Button variant="contained" onClick={openTelegram} sx={{ backgroundColor: '#FC72FF', color: 'white', fontWeight: 'bold', ml: 14 }}>
+          Join Telegram Chat
         </Button>
       </Box>
     </Box>
