@@ -46,7 +46,7 @@ function WelcomeOverlay({ onClose, isMobile}) {
       }}
     >
       <Box sx={{}}>
-        <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 4 }}>
+        <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 2, ml: 12}}>
           DEATH-MACHINE ️
         </Typography>
         <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 6 }}>
@@ -54,13 +54,13 @@ function WelcomeOverlay({ onClose, isMobile}) {
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 4 }}>
-        <Image src={deathMachine} alt="deathMachine" width={300} height={300} sx={{border: '2px solid #ffffff', borderRadius: '50%', boxShadow: '0px 0px 30px #ffffff'}} />
+        <Image src={deathMachine} alt="deathMachine" width={200} height={200} sx={{border: '2px solid #ffffff', borderRadius: '50%', boxShadow: '0px 0px 30px #ffffff'}} />
       </Box>
       <Box sx={{}}>
-        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 6 }}>
+        <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'black', mb: 4 }}>
           To learn more about the project and join our community, please join our Telegram chat!
         </Typography>
-        <Button variant="contained" onClick={openTelegram} sx={{ backgroundColor: '#00bfff', color: 'white', fontWeight: 'bold' }}>
+        <Button variant="contained" onClick={openTelegram} sx={{ backgroundColor: '#00bfff', color: 'white', fontWeight: 'bold', ml: 12 }}>
           Join Telegram Chat💀 ⚙
         </Button>
       </Box>

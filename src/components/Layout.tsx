@@ -119,7 +119,7 @@ export default function Layout({animationFrame,
         <WelcomeApp generateBoard={generateBoard} isMobile={false}/>
           <BlockExplorer />
           <Grid container spacing={1} sx={{ height: 800, width: 1400, p: 14, pl: 20, border: '1px grey' }} justifyContent="center" alignItems="center" display="flex" flexDirection="column" columnSpacing={0} gap={1}>
-            <WelcomeApp generateBoard={generateBoard} />
+      //      <WelcomeApp generateBoard={generateBoard} />
             <MainController generateGameBoard={generateGameBoard} handleClickSubmit={handleClickSubmit} />
             <MidScreenControl runnable={midScreenControlProps.runnable} animationFrame={midScreenControlProps.animationFrame} n_cycles={midScreenControlProps.n_cycles} animationState={midScreenControlProps.animationState} handleClick={midScreenControlHandleClick} handleSlideChange={midScreenControlHandleSlideChange} />
             <InstructionConsole pc={pc} shipSelected={shipSelected} selectShip={selectShip} onShipInitPositionsChange={onShipInitPositionsChange} shipInitPositions={shipInitPositions} onProgramsChange={onProgramsChange} programs={programs} />
