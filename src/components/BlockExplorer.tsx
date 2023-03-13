@@ -67,7 +67,7 @@ return (
           top: "140px",
           left: "53%",
           transform: "translateX(-50%)",
-          display: "flex",
+          display: "fixed",
           flexDirection: "row",
           alignItems: "center",
           backgroundColor: "#FFFFFF",

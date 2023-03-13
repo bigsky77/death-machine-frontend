@@ -11,6 +11,7 @@ function WelcomeOverlay({ onClose }) {
     window.open('https://t.me/+o2ukH44rqIczMjgx', '_blank');
   };
 
+
   return (
     <Box
       sx={{
@@ -18,8 +19,8 @@ function WelcomeOverlay({ onClose }) {
         top: 0,
         left: 0,
         zIndex: 1000,
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -28,8 +29,8 @@ function WelcomeOverlay({ onClose }) {
     >
       <Box
         sx={{
-          width: '40%',
-          height: '45',
+          width: '80%',
+          maxWidth: '500px',
           backgroundColor: 'white',
           borderRadius: 4,
           padding: 4,
@@ -42,13 +43,13 @@ function WelcomeOverlay({ onClose }) {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-          <Typography variant="h2" sx={{ fontSize: 40, color: 'black', mb: 4 }}>
+          <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 4 }}>
             DEATH-MACHINE 💀 ⚙️
           </Typography>
-          <Typography variant="body1" sx={{ fontSize: 18, color: 'black', mb: 6 }}>
+          <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 6 }}>
             Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain. We are currently in closed beta testing.
           </Typography>
-          <Typography variant="body1" sx={{ fontSize: 18, color: 'black', mb: 6 }}>
+          <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 6 }}>
             To learn more about the project and join our community, please join our Telegram chat!
           </Typography>
           <Button variant="contained" onClick={openTelegram}>
@@ -58,8 +59,7 @@ function WelcomeOverlay({ onClose }) {
       </Box>
     </Box>
   );
-}
-
+};
 export default function WelcomeApp({generateBoard}: props) {
   const [showWelcome, setShowWelcome] = useState(true);
 
