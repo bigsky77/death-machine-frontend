@@ -6,10 +6,15 @@ import gruvMachine from '../../public/gruvbox-smol.png';
 import Image from 'next/image'
 
 function WelcomeOverlay({ onClose }) {
+
+  const openTelegram = () => {
+    window.open('https://t.me/+o2ukH44rqIczMjgx', '_blank');
+  };
+
   return (
     <Box
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 1000,
@@ -18,15 +23,15 @@ function WelcomeOverlay({ onClose }) {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0.7)',
+        backgroundColor: 'rgba(0,0,0,0.5)',
       }}
     >
       <Box
         sx={{
           width: '40%',
-          height: '40%',
+          height: '50%',
           backgroundColor: 'white',
-          borderRadius: 0,
+          borderRadius: 4,
           padding: 4,
           display: 'flex',
           flexDirection: 'column',
@@ -36,28 +41,20 @@ function WelcomeOverlay({ onClose }) {
           backgroundPosition: 'center',
         }}
       >
-        <Box sx={{pl: 10, alignItems: 'center', justifyContent: 'center'}}>
-          <Typography variant="h1" sx={{ fontSize: 40, color: 'black' }}>
-            DEATH-MACHINE &#9760; &#9881;
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <Typography variant="h2" sx={{ fontSize: 40, color: 'black', mb: 4 }}>
+            DEATH-MACHINE 💀 ⚙️
           </Typography>
-        <TextField
-          label="email"
-          id="outlined-size-small"
-          defaultValue="simon@bigsky.gg"
-          size="small"
-          sx={{pl: 0, pr: 1, top: 120}}
-        />
-        <TextField
-          label="Starknet Address"
-          id="outlined-size-small"
-          defaultValue="0x1234567890"
-          size="small"
-          sx={{pl: 0, pr: 1, top: 120}}
-        />
+          <Typography variant="body1" sx={{ fontSize: 18, color: 'black', mb: 6 }}>
+            Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain. We are currently in closed beta testing.
+          </Typography>
+          <Typography variant="body1" sx={{ fontSize: 18, color: 'black', mb: 6 }}>
+            To learn more about the project and join our community, please join our Telegram chat!
+          </Typography>
+          <Button variant="contained" onClick={openTelegram}>
+            Join Telegram Chat
+          </Button>
         </Box>
-        <Button variant="contained" onClick={onClose}>
-          Join Waitlist
-        </Button>
       </Box>
     </Box>
   );
