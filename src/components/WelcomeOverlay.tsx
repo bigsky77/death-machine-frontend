@@ -29,7 +29,7 @@ function WelcomeOverlay({ onClose }) {
       <Box
         sx={{
           width: '40%',
-          height: '50%',
+          height: '45',
           backgroundColor: 'white',
           borderRadius: 4,
           padding: 4,
