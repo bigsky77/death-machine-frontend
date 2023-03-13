@@ -16,6 +16,7 @@ import InstructionConsole from './InstructionConsole/InstructionConsole'
 import EventReader from './EventReader'
 import MidScreenControl from './ui_settings/MidScreenControl'
 import { useAccount, useStarknetExecute, useTransactionReceipt } from "@starknet-react/core";
+import WelcomeAppMobile  from "./WelcomeOverlayMobile";
 import WelcomeApp  from "./WelcomeOverlay";
 import BlockExplorer  from "./BlockExplorer";
 
@@ -113,9 +114,10 @@ export default function Layout({animationFrame,
       }}
     >
       {isMobile ? (
-        <WelcomeApp generateBoard={generateBoard} isMobile={true} />
+        <WelcomeAppMobile generateBoard={generateBoard} isMobile={true} />
       ) : (
         <>
+        <WelcomeApp generateBoard={generateBoard} isMobile={true} />
           <BlockExplorer />
           <Grid container spacing={1} sx={{ height: 800, width: 1400, p: 14, pl: 20, border: '1px grey' }} justifyContent="center" alignItems="center" display="flex" flexDirection="column" columnSpacing={0} gap={1}>
             <MainController generateGameBoard={generateGameBoard} handleClickSubmit={handleClickSubmit} />

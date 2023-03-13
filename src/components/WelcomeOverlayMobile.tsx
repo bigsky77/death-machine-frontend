@@ -31,7 +31,7 @@ function WelcomeOverlay({ onClose, isMobile}) {
   >
     <Box
       sx={{
-        width: '50',
+        width: '95%',
         maxWidth: '500px',
         backgroundColor: '#f2f1ed',
         borderRadius: 4,
