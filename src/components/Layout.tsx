@@ -116,14 +116,12 @@ export default function Layout({animationFrame,
         <WelcomeApp generateBoard={generateBoard} isMobile={isMobile} />
       ) : (
         <>
-        <WelcomeApp generateBoard={generateBoard} isMobile={isMobile}/>
-          <BlockExplorer />
           <Grid container spacing={1} sx={{ height: 800, width: 1400, p: 14, pl: 20, border: '1px grey' }} justifyContent="center" alignItems="center" display="flex" flexDirection="column" columnSpacing={0} gap={1}>
-            <WelcomeApp generateBoard={generateBoard} />
-            <MainController generateGameBoard={generateGameBoard} handleClickSubmit={handleClickSubmit} />
-            <MidScreenControl runnable={midScreenControlProps.runnable} animationFrame={midScreenControlProps.animationFrame} n_cycles={midScreenControlProps.n_cycles} animationState={midScreenControlProps.animationState} handleClick={midScreenControlHandleClick} handleSlideChange={midScreenControlHandleSlideChange} />
-            <InstructionConsole pc={pc} shipSelected={shipSelected} selectShip={selectShip} onShipInitPositionsChange={onShipInitPositionsChange} shipInitPositions={shipInitPositions} onProgramsChange={onProgramsChange} programs={programs} />
-            <Grid sx={{ width: 530, height: 500, border: '1px grey' }}>
+            <BlockExplorer />
+                <MainController generateGameBoard={generateGameBoard} handleClickSubmit={handleClickSubmit} />
+                  <MidScreenControl runnable={midScreenControlProps.runnable} animationFrame={midScreenControlProps.animationFrame} n_cycles={midScreenControlProps.n_cycles} animationState={midScreenControlProps.animationState} handleClick={midScreenControlHandleClick} handleSlideChange={midScreenControlHandleSlideChange} />
+                  <InstructionConsole pc={pc} shipSelected={shipSelected} selectShip={selectShip} onShipInitPositionsChange={onShipInitPositionsChange} shipInitPositions={shipInitPositions} onProgramsChange={onProgramsChange} programs={programs} />
+                <Grid sx={{ width: 530, height: 500, border: '1px grey' }}>
               <GameGrid animationFrame={animationFrame} frames={frames} shipSelected={shipSelected} shipInitPositions={shipInitPositions} />
             </Grid>
           </Grid>
