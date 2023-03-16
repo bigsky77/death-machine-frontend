@@ -59,13 +59,13 @@ return (
       <Box
         gap={0.01}
         sx={{
-          width: 1035,
+          width: 1025,
           height: 40,
           justifyContent: "center",
           mb: 2,
           position: "absolute",
           top: "120px",
-          left: "50.5%",
+          left: "50.1%",
           transform: "translateX(-50%)",
           display: "fixed",
           flexDirection: "row",
