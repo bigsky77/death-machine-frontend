@@ -15,6 +15,7 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
 
     const adjacentSquares = [
       { x: x - 1, y: y - 1 },
+      { x: x, y: y},
       { x: x, y: y - 1 },
       { x: x + 1, y: y - 1 },
       { x: x - 1, y: y },
@@ -27,8 +28,8 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
     return adjacentSquares.some((square) =>
       frames[animationFrame].atoms.find(
         (atom) =>
-          atom.index.x === square.x &&
-          atom.index.y === square.y &&
+          atom.raw_index.x === square.x &&
+          atom.raw_index.y === square.y &&
           atom.typ === "ENEMY"
       )
     );
@@ -40,7 +41,7 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
     }
 
     if (isEnemyAdjacent(index, frames, animationFrame)) {
-      return "red";
+      return "rgba(255, 0, 0, 0.4)";
     } else {
       return "";
     }
@@ -54,14 +55,14 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
           const y = Math.floor(i / 15);
           if (frames[animationFrame].ships.find(ship => ship.index.x === x && ship.index.y === y && ship.status === "ACTIVE")) {
             return "🚀";
+          } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.typ === "ENEMY")) {
+            return "💀";
           } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.typ === "STAR" && atom.status === "ACTIVE")) {
             return "🌠";
           } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.typ === "PLANET" && atom.status === "ACTIVE")) {
             return "🪐";
           } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.status === "INACTIVE")) {
             return "-";
-          } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.typ === "ENEMY")) {
-            return "💀";
           } else {
             return "";
           }

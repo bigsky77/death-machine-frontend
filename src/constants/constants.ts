@@ -1,5 +1,6 @@
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import loadBoard from "../src/utils/loadBoard";
 
 export const BLANK_COLOR = '#f2f1ed' 
 
@@ -28,13 +29,14 @@ export const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const atomType = ["STAR","STAR", "STAR", "PLANET", "PLANET", "BLANK", "BLANK", "BLANK", "ENEMY"];
+const atomType = ["STAR","STAR", "STAR", "STAR","PLANET", "PLANET", "BLANK", "BLANK", "BLANK", "BLANK","ENEMY"];
 
 const initialArray = Array(225).fill("").map((item, index) => ({
   id: `star${index + 1}`,
-  typ: atomType[Math.floor(Math.random() * 9)],
+  typ: atomType[Math.floor(Math.random() * 11)],
   status: "ACTIVE",
   index: { x: Math.floor(index / 15), y: index % 15 },
+  raw_index: "",
 }));
 
 
@@ -45,5 +47,5 @@ export const BLANK_SOLUTION: Solution = {
         {id: 'ship2', type: 1, status: 1, index: { x:3, y:5 }, description: 3, pc_next: 0, selected: false},
     ],
     programs: ['x,x,x,x,x,x,x', 'x,x,x,x,x,x,x', 'x,x,x,x,x,x,x'],
-    atoms: initialArray,
+    atoms: [],
 }
