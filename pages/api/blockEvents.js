@@ -17,9 +17,9 @@ export default async function handler(req, res) {
         //         $gte: 0
         //     }
         // })
-        // .sort({
-        //     '_chain.valid_from': -1 // prefer latest
-        //})
+         .sort({
+             '_chain.valid_from': -1 // prefer latest
+        })
         .toArray()
 
     res.status(200).json({ 'Block': solutions })

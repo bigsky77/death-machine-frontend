@@ -83,7 +83,7 @@ export default function MainController({
                 p: "1rem",
                 mt: "1rem",
                 border: '2px solid #303030',
-                borderRadius: 1,
+                borderRadius: 0,
                 boxShadow: '4px 4px 0px #000000',
             }}
             gap={1}

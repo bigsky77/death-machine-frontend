@@ -41,9 +41,9 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
     }
 
     if (isEnemyAdjacent(index, frames, animationFrame)) {
-      return "rgba(255, 0, 0, 0.4)";
+      return "1px solid #FC72FF";// rgba(255, 0, 0, 0.9)";
     } else {
-      return "";
+      return '1px solid #FEB239';
     }
   };
 
@@ -85,7 +85,7 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
 
 function Square({value, color}) {
     return(
-      <Box sx={{height: 31, width: 31, border: '1px solid #FEB239', bgcolor: color, ":hover": {
+      <Box sx={{height: 31, width: 31, border: color ? color : "#FEB239", bgcolor: "", ":hover": {
                     bgcolor: '#FC72FF',
                     color: '#C72FF',
                     border: "1px solid #ffffff00"},
