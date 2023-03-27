@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
+import LinearProgress from '@mui/material/LinearProgress';
 import { useBlockEvents, useGameCompleteEvents } from "../../lib/api"
 
 const style = {
@@ -30,9 +31,11 @@ const style = {
 export default function SubmitButton({
   handleClickSubmit,
   txnPending = false,
+  address,
 }: {
   handleClickSubmit: () => void;
   txnPending?: boolean;
+  address,
 }) {
   const { t } = useTranslation();
 
@@ -87,8 +90,8 @@ export default function SubmitButton({
         )}
       </Button>
       <Modal
-        //open={open}
-        //onClose={handleClose}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -98,10 +101,10 @@ export default function SubmitButton({
             <ListItemText sx={{textAlign:'center', pb:2}}>DEATH-MACHINE</ListItemText>
           <Divider />
           <Typography variant="body1" sx={{ mb: 1, mt: 2 }}>
-            Player:
+            Player: {String(address).slice(0,6) + '...' + String(address).slice(-4)}
           </Typography>
           <Typography variant="body1" sx={{ mb: 1 }}>
-            Score:
+            Score: <LinearProgress variant="indeterminate" value={100} />
           </Typography>
           <Typography variant="body1" sx={{ mb: 1 }}>
             Stars:

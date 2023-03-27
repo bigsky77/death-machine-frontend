@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
+import Ship from './Ship'
 
-export default function GameGrid({ animationFrame, frames, shipInitPositions, shipSelected, updateSpaceships }) {
+export default function GameGrid({ animationFrame, frames, shipInitPositions, shipSelected }) {
   const ROW_CONST = 225;
   const [boxes, setBoxes] = useState(Array(ROW_CONST).fill("🌠"));
 
@@ -54,7 +55,7 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
           const x = i % 15;
           const y = Math.floor(i / 15);
           if (frames[animationFrame].ships.find(ship => ship.index.x === x && ship.index.y === y && ship.status === "ACTIVE")) {
-            return "🚀";
+            return "";
           } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.typ === "ENEMY")) {
             return "💀";
           } else if (frames[animationFrame].atoms.find(atom => atom.index.x === x && atom.index.y === y && atom.typ === "STAR" && atom.status === "ACTIVE")) {
@@ -72,23 +73,28 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
     }
   }, [animationFrame, shipInitPositions]);
 
-  return (
-    <Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} gap={0.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {boxes.map((value, index) => (
-          <Square key={index} value={value} color={checkAdjacent(index)} />
-        ))}
-      </Grid>
-    </Box>
-  );
+return (
+  <Box sx={{ width: '100%' }}>
+    <Grid container rowSpacing={2} gap={0.5} columnSpacing={{ xs: 1, sm: 2, md: 2 }} sx={{border: '1px solid black'}}>
+      {frames && animationFrame && frames[animationFrame].ships.some(ship => ship.status === "ACTIVE") ? (
+        frames[animationFrame].ships
+          .filter(ship => ship.status === "ACTIVE")
+          .map(ship => <Ship key={ship.id} shipState={ship} animationFrame={animationFrame} frames={frames} shipInitPositions={shipInitPositions}/>)
+      ) : null}
+      {boxes.map((value, index) => (
+        <Square key={index} value={value} color={checkAdjacent(index)} />
+      ))}
+    </Grid>
+  </Box>
+);
 }
 
 function Square({value, color}) {
     return(
-      <Box sx={{height: 31, width: 31, border: color ? color : "#FEB239", bgcolor: "", ":hover": {
+      <Box sx={{height: 32, width: 32, border: color ? color : "1px solid #FEB239", bgcolor: "", ":hover": {
                     bgcolor: '#FC72FF',
                     color: '#C72FF',
-                    border: "1px solid #ffffff00"},
+                    border: "1px solid #ffffff"},
                     fontSize: '26px',
                     textAlign: "center",
         }}>{value}</Box>
