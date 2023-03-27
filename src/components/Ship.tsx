@@ -18,15 +18,17 @@ export default function Ship ({ shipState, frames, animationFrame, shipInitPosit
     lastShipGridRef.current = shipState.index;
     }, [animationFrame, shipInitPositions, frames, shipState]);
 
-    const gap_offset = 3.2;
+    const gap_offset = 2.0;
+    const left_offset = -50;
+    const top_offset = -2;
 
     const { left } = useSpring({
-        from: {left: 845 + gap_offset + lastShipGridRef.current.x * (32+gap_offset*2)},
-        left: 845 + gap_offset + shipState.index.x * (32+gap_offset*2)
+        from: {left: left_offset + gap_offset + lastShipGridRef.current.x * (31+gap_offset*2)},
+        left: left_offset + gap_offset + shipState.index.x * (31+gap_offset*2)
     })
     const { top } = useSpring({
-        from: {top: 190 + gap_offset + lastShipGridRef.current.y * (32+gap_offset*2)},
-        top: 190 + gap_offset + shipState.index.y * (32+gap_offset*2)
+        from: {top: top_offset + gap_offset + lastShipGridRef.current.y * (31+gap_offset*2)},
+        top: top_offset + gap_offset + shipState.index.y * (31+gap_offset*2)
     })
 
     // remember ship index in useRef
@@ -41,15 +43,15 @@ export default function Ship ({ shipState, frames, animationFrame, shipInitPosit
             className={`${shipClassName}`}
             style={{
             position: 'absolute',
-            border: '1px solid white',
+            border: '1px white',
             left: left,
             top: top,
-            width: 32,
-            height: 32,
+            width: 31,
+            height: 31,
             fontSize: '26px',
             textAlign: "center",
             alignItems: 'center',
-            //lineHeight: '1rem',
+            lineHeight: '2rem',
             zIndex: '30',
             transformStyle:'preserve-3d',
         }}>

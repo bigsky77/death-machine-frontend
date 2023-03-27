@@ -74,8 +74,8 @@ export default function GameGrid({ animationFrame, frames, shipInitPositions, sh
   }, [animationFrame, shipInitPositions]);
 
 return (
-  <Box sx={{ width: '100%' }}>
-    <Grid container rowSpacing={2} gap={0.5} columnSpacing={{ xs: 1, sm: 2, md: 2 }} sx={{border: '1px solid black'}}>
+  <Box sx={{ width: '100%', height: '100%', transform: "translateX(-10%)"}} >
+    <Grid container rowSpacing={2} gap={0.5} columnSpacing={{ xs: 1, sm: 2, md: 6 }} sx={{border: '1px'}}>
       {frames && animationFrame && frames[animationFrame].ships.some(ship => ship.status === "ACTIVE") ? (
         frames[animationFrame].ships
           .filter(ship => ship.status === "ACTIVE")
@@ -91,7 +91,7 @@ return (
 
 function Square({value, color}) {
     return(
-      <Box sx={{height: 32, width: 32, border: color ? color : "1px solid #FEB239", bgcolor: "", ":hover": {
+      <Box sx={{height: 31, width: 31, border: color ? color : "1px solid #FEB239", bgcolor: "", ":hover": {
                     bgcolor: '#FC72FF',
                     color: '#C72FF',
                     border: "1px solid #ffffff"},
