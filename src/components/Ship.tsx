@@ -4,7 +4,7 @@ import ShipState, { ShipStatus, ShipType } from "../types/ShipState";
 import Grid from "../types/Grid";
 import { useSpring, animated } from "react-spring";
 
-export default function Ship ({ shipState, frames, animationFrame, shipInitPositions}) {
+export default function Ship ({ shipState, frames, animationFrame, shipInitPositions, shipSelected}) {
 
     if (!shipState) return <></>
 
@@ -55,7 +55,7 @@ export default function Ship ({ shipState, frames, animationFrame, shipInitPosit
             zIndex: '30',
             transformStyle:'preserve-3d',
         }}>
-            <div>{ship_id}</div>
+             <Box sx={{ bgcolor: shipSelected ? '#FC72FF' : '' }}>{ship_id}</Box>
         </animated.div>
     );
 }

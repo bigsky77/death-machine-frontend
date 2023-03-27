@@ -92,8 +92,8 @@ return (
             alignItems: "center",
             width: 980,
             overflowX: "auto",
-            ml: 5.5,
-            mr: 5.5,
+            ml: 3.5,
+            mr: 3.5,
             scrollbarWidth: "none", // hide scrollbar on Firefox
             msOverflowStyle: "none", // hide scrollbar on IE, Edge
             "&::-webkit-scrollbar": {
