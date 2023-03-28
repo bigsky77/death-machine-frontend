@@ -22,5 +22,9 @@ export default async function handler(req, res) {
         })
         .toArray()
 
-    res.status(200).json({ 'DeathMachine': solutions })
+    try{
+     const json = await res.status(200).json({ 'DeathMachine': solutions })
+    } catch(err) {
+      console.log("err: ", err)
+  }
 }
