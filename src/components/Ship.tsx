@@ -10,13 +10,13 @@ export default function Ship ({ shipState, frames, animationFrame, shipInitPosit
 
     const lastShipGridRef = useRef<Grid>({x:0,y:0});
 
-    useEffect(() => {
-    const ship = frames[animationFrame].ships.find(ship => ship.id === shipState.id);
-        if (ship) {
-            lastShipGridRef.current = ship;
-        }
-    lastShipGridRef.current = shipState.index;
-    }, [animationFrame, shipInitPositions, frames, shipState]);
+    // useEffect(() => {
+    // const ship = frames[animationFrame].ships.find(ship => ship.id === shipState.id);
+    //     if (ship) {
+    //         lastShipGridRef.current = ship;
+    //     }
+    // lastShipGridRef.current = shipState.index;
+    // }, [animationFrame, shipInitPositions, frames, shipState]);
 
     const gap_offset = 2.0;
     const left_offset = -50;

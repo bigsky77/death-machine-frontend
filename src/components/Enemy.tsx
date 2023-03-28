@@ -9,13 +9,13 @@ export default function Enemy ({ enemyState, frames, animationFrame}) {
 
     const lastEnemyGridRef = useRef<Grid>({x:7,y:7});
 
-    useEffect(() => {
-    const enemy = frames[animationFrame].atoms.find(atom => atom.id === enemyState.id);
-        if (enemy) {
-            lastEnemyGridRef.current = enemy;
-        }
-    lastEnemyGridRef.current = enemyState.index;
-    }, [animationFrame, frames, enemyState])
+    // useEffect(() => {
+    //     const enemy = frames[animationFrame].atoms.find(atom => atom.id === enemyState.id);
+    //         if (enemy) {
+    //             lastEnemyGridRef.current = enemy;
+    //         }
+    //     lastEnemyGridRef.current = enemyState.index;
+    // }, [animationFrame, frames, enemyState])
 
     const gap_offset = 2.0;
     const left_offset = -50;
