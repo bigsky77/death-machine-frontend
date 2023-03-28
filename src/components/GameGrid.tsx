@@ -104,6 +104,7 @@ function Square({value, color}) {
                     border: "1px solid #ffffff"},
                     fontSize: '26px',
                     textAlign: "center",
+                    lineHeight: "28px",
         }}>{value}</Box>
     );
   }

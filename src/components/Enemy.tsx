@@ -50,7 +50,7 @@ export default function Enemy ({ enemyState, frames, animationFrame}) {
             fontSize: '26px',
             textAlign: "center",
             alignItems: 'center',
-            lineHeight: '2rem',
+            lineHeight: '30px',
             zIndex: '30',
             transformStyle:'preserve-3d',
         }}>
