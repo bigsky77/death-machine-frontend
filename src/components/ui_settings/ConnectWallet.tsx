@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useStardiscRegistryByAccount } from '../../../lib/api'
 import {useAccount, useConnectors} from '@starknet-react/core'
 import { useTranslation } from "react-i18next";
 import MenuList from '@mui/material/MenuList';
@@ -23,7 +22,7 @@ export default function ConnectWallet () {
 
     const { account, address, status } = useAccount()
     const account_str_decimal = number.toBN(address).toString(10)
-    const { data: stardisc_query } = useStardiscRegistryByAccount (account_str_decimal) // must be a better way than fetching the entire registry
+    const { data: stardisc_query } = null;//useStardiscRegistryByAccount (account_str_decimal) // must be a better way than fetching the entire registry
 
     let modalRender;
 
