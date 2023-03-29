@@ -1,14 +1,13 @@
 import clientPromise from "../../lib/mongodb"
+import { connectToDatabase } from "../../lib/mongodb"
 import { DB_NAME } from '../../src/constants/constants'
 
 export default async function handler(req, res) {
 
-    const client = await clientPromise
+    const { database } = await connectToDatabase();
+    const collection = database.collection(process.env.NEXT_ATLAS_COLLECTION);
 
-    const db = client.db("DeathMachine")
-
-    const solutions = await db
-        .collection("boardSet_docs").find()
+    const solutions = await collection.find({})
         .sort({
             '_chain.valid_from': -1 // prefer latest
         })
