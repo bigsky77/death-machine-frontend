@@ -33,7 +33,7 @@ export default function Home() {
   const ANIM_FRAME_LATENCY_DAW = 300;
   const runnable = true; //placeholder
 
-  const { data } = useAllEvents();
+  const { data, isLoading, isError, notFound } = useAllEvents();
   const atomTypes = ["BLANK","ENEMY","STAR","BLANK"];
 
   useEffect(() => {
