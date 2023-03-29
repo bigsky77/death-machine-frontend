@@ -4,9 +4,11 @@ import { DB_NAME } from '../../src/constants/constants'
 
 export default async function handler(req, res) {
 
+  try{
     const client = await clientPromise
 
     const db = client.db("DeathMachine")
+
     const solutions = await db
           .collection("boardSet_docs").find()
          .sort({
@@ -15,6 +17,8 @@ export default async function handler(req, res) {
         .toArray()
 
     console.log("solutions: ", solutions);
-
     res.status(200).json({ 'DeathMachine': solutions })
+    } catch(err) {
+      console.log("err: ", err)
+  }
 }
