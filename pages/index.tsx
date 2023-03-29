@@ -52,6 +52,7 @@ export default function Home() {
       updateAtomType(newInitialArray.map((atom) => (atom.typ)));
       console.log("initial array", newInitialArray)
     }
+
   }, [data]);
  
   const selectShip = (id) => {
@@ -89,10 +90,6 @@ export default function Home() {
           };
       });
   
-  useEffect(() => {
-    generateBoard();
-  }, [shipInitPositions, ATOMS]);
-
   async function generateBoard(){
     let instructionSets = programsToInstructionSets(programs);
     const boardConfig: BoardConfig = {
