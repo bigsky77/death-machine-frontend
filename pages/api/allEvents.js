@@ -9,22 +9,12 @@ export default async function handler(req, res) {
     const db = client.db("DeathMachine")
     const solutions = await db
           .collection("boardSet_docs").find()
-        // .find({
-        //     instructions: {
-        //         $not: { $size: 0 }
-        //     },
-        //     delivered: {
-        //         $gte: 0
-        //     }
-        // })
          .sort({
              '_chain.valid_from': -1 // prefer latest
         })
         .toArray()
 
-    try{
-     const json = await res.status(200).json({ 'DeathMachine': solutions })
-    } catch(err) {
-      console.log("err: ", err)
-  }
+    console.log("solutions: ", solutions);
+
+    res.status(200).json({ 'DeathMachine': solutions })
 }
