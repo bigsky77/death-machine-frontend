@@ -1,12 +1,16 @@
 import React, { useRef, useCallback, useEffect, useState } from "react";
 import { Box, Tooltip } from "@mui/material";
 import { BLANK_COLOR } from "../constants/constants";
+import { useBlockEvents, useGameCompleteEvents } from "../../lib/api"
 
 interface BlockExplorerProps {
   blocks: number[];
 }
 
 export default function BlockExplorer() {
+  const { block_events } = useBlockEvents();
+  console.log("block data", block_events);
+
   const [visibleIndex, setVisibleIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [blocks, setBlocks] = useState([...Array(30)].map((_, i) => i + 1));
@@ -26,6 +30,9 @@ export default function BlockExplorer() {
       updateVisibleBlocks();
       return () => container.removeEventListener("scroll", updateVisibleBlocks);
     }
+    if(block_events){
+        console.log("block events", block_events.Block[0].data)
+      }
   }, []);
 
   const handleScrollLeft = () => {
@@ -59,23 +66,22 @@ return (
       <Box
         gap={0.01}
         sx={{
-          width: 1040,
+          width: 1035,
           height: 40,
           justifyContent: "center",
-          mb: 2,
-          position: "absolute",
-          top: "140px",
-          left: "53%",
-          transform: "translateX(-50%)",
+          mb: 0,
+          //top: "10px",
+          //left: "50.1%",
+          transform: "translateX(12%)",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          backgroundColor: "#FFFFFF",
-          p: "0.1rem",
-          mt: "1rem",
+          backgroundColor: BLANK_COLOR,
+          //p: "0.1rem",
+          //mt: "1rem",
           border: "2px solid #303030",
           borderRadius: 0,
-          boxShadow: "2px 2px 0px #000000",
+          boxShadow: '4px 4px 0px #000000',
         }}
       >
         <Box
@@ -84,10 +90,10 @@ return (
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            width: 1000,
+            width: 980,
             overflowX: "auto",
-            ml: 2.5,
-            mr: 2.5,
+            ml: 3.5,
+            mr: 3.5,
             scrollbarWidth: "none", // hide scrollbar on Firefox
             msOverflowStyle: "none", // hide scrollbar on IE, Edge
             "&::-webkit-scrollbar": {
@@ -112,9 +118,10 @@ return (
                   alignItems: "center",
                   width: 40,
                   height: 30,
-                  backgroundColor: "#FC72FF",
-                  borderRadius: 1,
-                  color: "#FFFFFF",
+                  backgroundColor: BLANK_COLOR,
+                  borderRadius: 0,
+                  border: "1.5px solid #FC72FF",
+                  color: "black",
                   fontWeight: "bold",
                   mr: 0.5,
                   ml: 0.5,
@@ -139,13 +146,14 @@ return (
                 transform: "translateY(-50%)",
                 width: 20,
                 height: 40,
-                backgroundColor: "black",
+                backgroundColor: BLANK_COLOR,
+                color: "black",
+                border: "2px solid #303030",
                 borderRadius: 0,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 cursor: "pointer",
-                boxShadow: "2px 2px 0px #000000",
                 "&:hover": {
                   backgroundColor: "#EEEEEE",
                 }
@@ -162,13 +170,14 @@ return (
                 transform: "translateY(-50%)",
                 width: 20,
                 height: 40,
-                backgroundColor: "black",
+                backgroundColor: BLANK_COLOR,
+                color: "black",
+                border: "2px solid #303030",
                 borderRadius: 0,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 cursor: "pointer",
-                boxShadow: "2px 2px 0px #000000",
                 "&:hover": {
                   backgroundColor: "#EEEEEE",
                 },

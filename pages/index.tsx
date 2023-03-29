@@ -9,11 +9,13 @@ import simulator from "../src/components/simulator";
 import { BoardConfig } from "../src/types/BordConfig";
 import ShipState, {ShipStatus, ShipType} from '../src/types/ShipState';
 import AtomState, {AtomStatus, AtomType} from '../src/types/AtomState';
+import loadBoard from "../src/utils/loadBoard";
 
 export default function Home() {
+
   const [shipInitPositions, setShipInitPositions] = useState<Grid[]>(BLANK_SOLUTION.ships.map((ship) => ship.index));
   const [shipSelected, updateShipSelected] = useState<[]>(BLANK_SOLUTION.ships.map((ship) => ship.selected));
-
+  console.log("shipInitPositions", shipInitPositions);
   const [ATOMS, updateAtoms] = useState<Grid[]>(BLANK_SOLUTION.atoms.map((atom) => atom.index));
   const [atomType, updateAtomType] = useState<Grid[]>(BLANK_SOLUTION.atoms.map((atom) => atom.typ));
 
@@ -32,20 +34,38 @@ export default function Home() {
   const runnable = true; //placeholder
 
   const { data } = useAllEvents();
-  console.log("Contract Data", data)
+  const atomTypes = ["BLANK","ENEMY","STAR","BLANK"];
 
-  const selectShip = (id) => {
-      const selectedShip = shipSelected.map((ship) => {
-          if(ship.selected === true) {
-              return { ...ship, selected: false};
-            } else {
-                return { ...ship, selected: true};
-              }
-            return ship;
-        });
-      console.log("selectedShip", selectedShip);
-      updateShipSelected(selectedShip);
+  useEffect(() => {
+    if (data) {
+      console.log("data", data);
+      const board = data.DeathMachine[0].data;
+      const newInitialArray = Array(225).fill("").map((item, index) => ({
+        id: `star${index + 1}`,
+        typ: atomTypes[board[index].type],
+        status: "ACTIVE",
+        index: board[index].index,
+        raw_index: board[index].raw_index,
+      }));
+      updateAtoms(newInitialArray.map((atom) => (atom.index)));
+      updateAtomType(newInitialArray.map((atom) => (atom.typ)));
+      console.log("initial array", newInitialArray)
     }
+  }, [data]);
+ 
+  const selectShip = (id) => {
+  updateShipSelected(prevState => {
+    const newShipSelected = prevState.map((ship, index) => {
+      if (index === id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log("newShipSelected", newShipSelected);
+    return newShipSelected;
+  });
+  };
 
   const shipInitStates: ShipState[] = shipInitPositions.map((pos, ship_i) => {
           return {
@@ -58,21 +78,21 @@ export default function Home() {
           };
       });
 
-  useEffect(() => {
-    generateBoard();
-  }, [shipInitPositions, ATOMS, atomType]);
-
-  const atomInitStates: AtomState[] = ATOMS.map(function (atom, i) {
+    const atomInitStates: AtomState[] = ATOMS.map(function (atom, i) {
           return {
               status: "ACTIVE",
               index: atom,
               id: `atom${i}`,
               typ: atomType[i],
-              possessed_by: null,
+              raw_index: atom,
           };
       });
+  
+  useEffect(() => {
+    generateBoard();
+  }, [shipInitPositions, ATOMS]);
 
-  function generateBoard(){
+  async function generateBoard(){
     let instructionSets = programsToInstructionSets(programs);
     const boardConfig: BoardConfig = {
           dimension: DIM,
@@ -191,11 +211,11 @@ export default function Home() {
 
     const tx = {
             contractAddress: DEATHMACHINE_ADDR,
-            entrypoint: "simulation",
+            entrypoint: "submit_simulation",
             calldata: args,
         };
         return [tx];
-    }, [programs]);
+    }, [programs, shipInitPositions]);
 
     return (
     <>
