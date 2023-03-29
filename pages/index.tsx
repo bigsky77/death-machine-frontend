@@ -34,11 +34,11 @@ export default function Home() {
   const runnable = true; //placeholder
 
   const { data } = useAllEvents();
-  console.log("data", data);
   const atomTypes = ["BLANK","ENEMY","STAR","BLANK"];
 
   useEffect(() => {
     if (data) {
+      console.log("data", data);
       const board = data.DeathMachine[0].data;
       const newInitialArray = Array(225).fill("").map((item, index) => ({
         id: `star${index + 1}`,

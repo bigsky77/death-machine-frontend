@@ -13,7 +13,9 @@ export default async function handler(req, res) {
         })
         .toArray()
 
-    console.log("solutions: ", solutions);
-
-    res.status(200).json({ 'DeathMachine': solutions });
+  if (solutions) {
+    return res.status(200).json({ 'DeathMachine': solutions });
+  } else {
+    return res.status(404).json({ 'DeathMachine': 'Not found' });
+  }
 }
