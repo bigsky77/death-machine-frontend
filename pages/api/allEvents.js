@@ -1,7 +1,6 @@
 import clientPromise from "../../lib/mongodb"
 import { DB_NAME } from '../../src/constants/constants'
 
-
 export default async function handler(req, res) {
 
     const client = await clientPromise
@@ -17,9 +16,5 @@ export default async function handler(req, res) {
 
     console.log("solutions: ", solutions);
 
-    if(solutions){
-      return res.status(200).json({ 'DeathMachine': solutions });
-    } else {
-      return res.status(404).json({ 'DeathMachine': 'Not Found' });
-    }
+    res.status(200).json({ 'DeathMachine': solutions });
 }
