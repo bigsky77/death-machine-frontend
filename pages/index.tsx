@@ -33,12 +33,13 @@ export default function Home() {
   const ANIM_FRAME_LATENCY_DAW = 300;
   const runnable = true; //placeholder
 
-  const { data, isLoading, isError, notFound } = useAllEvents();
+  const { data, error } = useAllEvents();
+  console.log("data", data);
+
   const atomTypes = ["BLANK","ENEMY","STAR","BLANK"];
 
   useEffect(() => {
     if (data) {
-      console.log("data", data);
       const board = data.DeathMachine[0].data;
       const newInitialArray = Array(225).fill("").map((item, index) => ({
         id: `star${index + 1}`,
