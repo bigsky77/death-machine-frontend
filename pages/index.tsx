@@ -80,7 +80,7 @@ export default function Home() {
           };
       });
 
-    const atomInitStates: AtomState[] = ATOMS.map(function (atom, i) {
+  const atomInitStates: AtomState[] = ATOMS.map(function (atom, i) {
           return {
               status: "ACTIVE",
               index: atom,
@@ -105,6 +105,7 @@ export default function Home() {
       ) as Frame[];
 
       setFrames(simulatedFrames);
+      console.log("simulatedFrames", simulatedFrames);
       setAnimationFrame(1);
   }
 

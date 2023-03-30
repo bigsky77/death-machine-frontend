@@ -87,7 +87,6 @@ return (
           .filter(atom => atom.typ === "ENEMY")
           .map(atom => <Enemy key={atom.id} enemyState={atom} animationFrame={animationFrame} frames={frames}/>)
       ) : null}
-
       {boxes.map((value, index) => (
         <Square key={index} value={value} color={checkAdjacent(index)} />
       ))}
