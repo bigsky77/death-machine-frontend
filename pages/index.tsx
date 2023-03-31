@@ -89,7 +89,11 @@ export default function Home() {
               raw_index: atom,
           };
       });
-  
+
+  useEffect(() => {
+    generateBoard();
+  }, [shipInitPositions]);
+
   async function generateBoard(){
     let instructionSets = programsToInstructionSets(programs);
     const boardConfig: BoardConfig = {
@@ -221,6 +225,7 @@ export default function Home() {
       <Layout
         animationFrame={animationFrame}
         frames={frames}
+        ATOMS={ATOMS}
         callData={calls}
         pc={pc}
         shipSelected={shipSelected}
