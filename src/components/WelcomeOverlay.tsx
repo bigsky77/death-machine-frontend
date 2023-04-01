@@ -5,12 +5,9 @@ import { Typography } from '@mui/material';
 import gruvMachine from '../../public/gruv-machine.png'
 import Image from 'next/image'
 import { BLANK_COLOR } from "../constants/constants";
+import  ZKConnectApp from "./ui_settings/ZKConnectApp";
 
-function WelcomeOverlay({ onClose, isMobile}) {
-
-  const openTelegram = () => {
-    window.open('https://t.me/+o2ukH44rqIczMjgx', '_blank');
-  };
+function WelcomeOverlay({ handleWelcomeClose, isMobile}) {
 
   return (
     <Box
@@ -33,6 +30,7 @@ function WelcomeOverlay({ onClose, isMobile}) {
           maxWidth: '500px',
           backgroundColor: '#f2f1ed',
           borderRadius: 1,
+          border: '4px solid #FC72FF',
           padding: 4,
           display: 'flex',
           flexDirection: 'column',
@@ -45,12 +43,13 @@ function WelcomeOverlay({ onClose, isMobile}) {
           <Typography variant="h2" sx={{ fontSize: '2rem', color: 'black', mb: 4 }}>
             DEATH-MACHINE️
           </Typography>
-          <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 6 }}>
-            Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to create a novel proof-of-play blockchain. We are currently in closed beta testing.
+          <Typography variant="body1" sx={{ fontSize: '1rem', color: 'black', mb: 4 }}>
+            Welcome to Death-Machine! A fully on-chain game that leverages zero-knowledge cryptography to power a novel proof-of-play consensus mechanism.   
+            <br></br>
+            <br></br>
+            We are currently in closed beta testing.  If you want a sneak peak, click the zkConnect button to generate a privacy preserving proof that you follow @__zkhack__ on Twitter!  
           </Typography>
-          <Button variant="contained" onClick={onClose}>
-            Launch Death-Machine
-          </Button>
+          <ZKConnectApp  handleWelcomeClose={handleWelcomeClose}/>
         </Box>
       </Box>
     </Box>
@@ -67,7 +66,7 @@ export default function WelcomeApp({generateBoard}) {
 
   return (
     <>
-      {showWelcome && <WelcomeOverlay onClose={handleWelcomeClose} />}
+      {showWelcome && <WelcomeOverlay handleWelcomeClose={handleWelcomeClose} />}
     </>
   );
 }

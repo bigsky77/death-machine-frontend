@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useGameCompleteEvents } from "../../lib/api";
+import { number } from 'starknet';
 
 const columns = [
   { field: 'id', headerName: 'Rank', width: 30 },
@@ -27,34 +28,39 @@ export default function LeaderBoard() {
   // Sort the data array by score in descending order and update rows state
   useEffect(() => {
     if (data) {
-      const sortedData = data.gameEvents.sort((a, b) => b.score - a.score);
+      console.log("gameComplete", data.gameComplete);
+      const sortedData = data.gameComplete.sort((a, b) => b.score - a.score);
       const mappedData = sortedData.map((item, index) => ({
         id: index + 1,
-        Address: item.player_address,
+        Address: number.toHex(item.address),
         Score: item.score
       }));
+      console.log("mappedData", mappedData);
       setRows(mappedData);
     }
   }, [data]);
 
   return (
-    <>
-    { data ? (
     <div style={{ height: 300, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
+        pageSizeOptions={[]}
+        components={{
+          Toolbar: () => (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 20px', backgroundColor: '#f5f5f5' }}>
+              <div style={{ fontSize: '24px', fontWeight: 'bold' }}>LeaderBoard</div>
+            </div>
+          ),
+        }}
+        componentsProps={{
+          toolbar: {
+            disableDensitySelector: true,
+            disableColumnFilter: true,
+            disableColumnMenu: true,
+          },
+        }}
       />
     </div>
-    ) : (
-    <div style={{ height: 300, width: '100%' }}>
-      <DataGrid
-        rows={xrows}
-        columns={columns}
-      />
-    </div>
-    )
-    }
-   </>
   );
 }

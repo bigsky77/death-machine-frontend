@@ -42,16 +42,6 @@ export default function SubmitButton({
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
 
-  const { data } = useGameCompleteEvents();
-
-  useEffect(() => {
-    if (data) {
-      console.log("game complete", data.gameEvents[0]);
-    } else {
-      console.log("no game complete");
-    }
-  }, [data]);
-
   useEffect(() => {
     if (txnPending) {
       setOpen(true);

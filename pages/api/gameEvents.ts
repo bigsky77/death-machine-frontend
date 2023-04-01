@@ -29,5 +29,5 @@ export default async function handler(
             })
           .toArray()
 
-    res.status(200).json({ 'gameEvents': gameComplete })
+    res.status(200).json({ 'gameComplete': gameComplete })
 }

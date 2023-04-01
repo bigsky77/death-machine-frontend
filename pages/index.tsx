@@ -184,7 +184,7 @@ export default function Home() {
             // Stop
             clearInterval(loop); // kill the timer
             setAnimationState("Stop");
-            setAnimationFrame((_) => 0);
+            setAnimationFrame((_) => 1);
         }
     }
 
