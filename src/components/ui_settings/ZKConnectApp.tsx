@@ -38,7 +38,7 @@ export default function ZKConnectApp({handleWelcomeClose}) {
 
   useEffect(() => {
     console.log("followerStatus", followerStatus);
-    if (followerStatus === "uccess") {
+    if (followerStatus === "success") {
       handleWelcomeClose();
     }
   }, [followerStatus]);
