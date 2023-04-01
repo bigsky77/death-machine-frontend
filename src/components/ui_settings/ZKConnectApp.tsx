@@ -5,13 +5,14 @@ import {
   AuthType,
 } from "@sismo-core/zk-connect-react";
 import { useState, useEffect } from "react";
+import { Box } from "@mui/material";
 import axios from "axios";
 
 export const zkConnectConfig: ZkConnectClientConfig = {
   appId: "0x97f25a024703a13d6cf18b84639e4c02",
   devMode: {
     // enable or disable dev mode here to create development groups and use the development vault.
-    enabled: false, //process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL" ? true : false,
+    enabled: true, //process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL" ? true : false,
     devGroups: [
       {
         groupId: "0x7aa0bdfe70617900baa6e45beb5f49f0",
@@ -68,9 +69,14 @@ export default function ZKConnectApp({handleWelcomeClose}) {
             }}
             verifying={verifying}
             overrideStyle={{
-              marginTop: 30,
-           }}
+              backgroundColor: "#FEB239",
+              borderRadius: 2,
+              border: '1px solid black',
+              boxShadow: '2px 2px 0px #000000',
+            }}
           />
     </>
   );
 }
+
+

@@ -19,7 +19,7 @@ type Data = {
 const zkConnectConfig: ZkConnectServerConfig = {
   appId: "0x97f25a024703a13d6cf18b84639e4c02",
   devMode: {
-    enabled: false,//process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL",
+    enabled: true,//process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL",
   }
 }
 
@@ -28,6 +28,7 @@ const zkConnect = ZkConnect(zkConnectConfig);
 const claimRequest = {
   groupId: "0x7aa0bdfe70617900baa6e45beb5f49f0",
 };
+
 const authRequest = {
   authType: AuthType.ANON,
 };
