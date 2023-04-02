@@ -19,7 +19,7 @@ type Data = {
 const zkConnectConfig: ZkConnectServerConfig = {
   appId: "0x97f25a024703a13d6cf18b84639e4c02",
   devMode: {
-    enabled: true,//process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL",
+    enabled: false,//process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL",
   }
 }
 
