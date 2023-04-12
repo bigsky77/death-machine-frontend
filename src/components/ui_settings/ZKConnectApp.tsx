@@ -48,7 +48,7 @@ export default function ZKConnectApp({handleWelcomeClose}) {
        <ZkConnectButton
             config={zkConnectConfig}
             claimRequest={{
-              groupId: "0xd4c26c7339106996298c53eaab7a2d59",
+              groupId: "0x7aa0bdfe70617900baa6e45beb5f49f0",
             }}
             authRequest={{authType: AuthType.ANON}}
             onResponse={(response) => {
