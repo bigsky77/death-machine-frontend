@@ -26,7 +26,7 @@ const zkConnectConfig: ZkConnectServerConfig = {
 const zkConnect = ZkConnect(zkConnectConfig);
 
 const claimRequest = {
-  groupId: "0x7aa0bdfe70617900baa6e45beb5f49f0",
+  groupId: "0xd4c26c7339106996298c53eaab7a2d59",
 };
 
 const authRequest = {
