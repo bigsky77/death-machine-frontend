@@ -47,7 +47,7 @@ export default function SismoConnect({handleWelcomeClose}) {
                     auths={[{authType:AuthType.VAULT}]}
                     onResponse={(response: SismoConnectResponse) => verify(response)}
                     verifying={verifying}
-                    //callbackPath={"src/components/ui_settings/SismoConnect"}
+                    //callbackPath={'/src/components/ui_settings/SismoConnect'}
                     overrideStyle={{marginBottom: 10}}
                 />
       </div>
