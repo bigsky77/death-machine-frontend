@@ -1,13 +1,13 @@
 import {
-  ZkConnectButton,
-  ZkConnectClientConfig,
-  ZkConnectResponse,
+  SismoConnectButton,
+  SismoConnectClientConfig,
+  SismoConnectResponse,
   AuthType,
-} from "@sismo-core/zk-connect-react";
+} from "@sismo-core/sismo-connect-react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const zkConnectConfig: ZkConnectClientConfig = {
+export const SismoConnectConfig: SismoConnectClientConfig = {
   appId: "0x97f25a024703a13d6cf18b84639e4c02",
   devMode: {
     // enable or disable dev mode here to create development groups and use the development vault.
@@ -33,8 +33,8 @@ export default function ZKConnectApp({handleWelcomeClose}) {
   const [verifying, setVerifying] = useState(false);
   const [followerStatus, setFollowerStatus] =
     useState<followerStatus | null>(null);
-  const [zkConnectResponse, setZkConnectResponse] =
-    useState<ZkConnectResponse | null>(null);
+  const [sismoConnectResponse, setSismoConnectResponse] =
+    useState<SismoConnectResponse | null>(null);
 
   useEffect(() => {
     console.log("followerStatus", followerStatus);
@@ -45,18 +45,15 @@ export default function ZKConnectApp({handleWelcomeClose}) {
 
   return (
     <>
-       <ZkConnectButton
-            config={zkConnectConfig}
-            claimRequest={{
-              groupId: "0x7aa0bdfe70617900baa6e45beb5f49f0",
-            }}
-            authRequest={{authType: AuthType.ANON}}
-            onResponse={(response) => {
+       <SismoConnectButton
+            config={SismoConnectConfig}
+            auths={{authType: AuthType.ANON}}
+            onResponse={(response: SismoConnectResponse) => {
               setVerifying(true);
-              setZkConnectResponse(response);
+              setSismoConnectResponse(response);
               axios
                 .post(`/api/subscribe`, {
-                  zkConnectResponse: response,
+                  sismoConnectResponse: response,
                 })
                 .then((res) => {
                   setVerifying(false);

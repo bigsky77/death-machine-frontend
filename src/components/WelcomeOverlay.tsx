@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 import gruvMachine from '../../public/gruv-machine.png'
 import Image from 'next/image'
 import { BLANK_COLOR } from "../constants/constants";
-import  ZKConnectApp from "./ui_settings/ZKConnectApp";
+import  SismoConnect from "./ui_settings/SismoConnect";
 
 function WelcomeOverlay({ handleWelcomeClose, isMobile}) {
 
@@ -50,7 +50,7 @@ return (
           We are currently in beta testing.  If you want a sneak peak, generate a proof that you follow <span style={{ color: '#1DA1F2', fontWeight: 'bold', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => window.open('https://twitter.com/__zkhack__')}>@__zkhack__</span> on Twitter!
           <br></br>
         </Typography>
-        <ZKConnectApp handleWelcomeClose={handleWelcomeClose}/>
+        <SismoConnect handleWelcomeClose={handleWelcomeClose}/>
       </Box>
     </Box>
   </Box>

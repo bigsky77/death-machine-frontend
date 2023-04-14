@@ -1,53 +1,28 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { DataRequest, ZkConnect, ZkConnectServerConfig, AuthType } from '@sismo-core/zk-connect-server';
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { AuthType, SismoConnect, SismoConnectServerConfig, SismoConnectVerifiedResult } from '@sismo-core/sismo-connect-server';
 
-enum Status {
-  NotSubscribed = "not-subscribed",
-  Success = "success",
-  Error = "error",
-  AlreadySubscribed = "already-subscribed"
-}
-
-type Data = {
-  status: Status,
-  userId?: string,
-  email?: string,
-  message?: string
-}
-
-const zkConnectConfig: ZkConnectServerConfig = {
+const sismoConnectConfig: SismoConnectServerConfig = {
   appId: "0x97f25a024703a13d6cf18b84639e4c02",
-  devMode: {
-    enabled: false,//process.env.NEXT_PUBLIC_ENV_NAME === "LOCAL",
-  }
 }
 
-const zkConnect = ZkConnect(zkConnectConfig);
-
-const claimRequest = {
-  groupId: "0x7aa0bdfe70617900baa6e45beb5f49f0",
-};
-
-const authRequest = {
-  authType: AuthType.ANON,
-};
+const sismoConnect = SismoConnect(sismoConnectConfig);
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<void>
 ) {
-
-  const { zkConnectResponse } = req.body;
-
+  const { response } = req.body;
   try {
-    const { verifiedAuths } = await zkConnect.verify(zkConnectResponse, {
-      authRequest,
-      claimRequest,
+    const result: SismoConnectVerifiedResult = await sismoConnect.verify(response, {
+      auths: [{authType: AuthType.VAULT}]
     });
-    const userId =  verifiedAuths[0].userId;
-    res.status(200).json({ status: Status.Success, userId });
-  } catch (error) {
-    res.status(500).json({ status: Status.Error, message: "error" });
+    console.log("Response verified:", result.response);
+    console.log("Anonymized userId: ", result.getUserId(AuthType.VAULT))
+    res.status(200).send();
+  } catch (e: any) {
+    console.log("response:", response.proofs[0]);
+    console.error(e);
+    res.status(400).send();
   }
 }
