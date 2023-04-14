@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 export const sismoConnectConfig: SismoConnectClientConfig = {
   appId: "0x97f25a024703a13d6cf18b84639e4c02",
   devMode: {
-    enabled: true,
+    enabled: false,
   }
 };
 
