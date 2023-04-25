@@ -1,38 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Death-Machine
 
-## Getting Started
+Welcome to **Death-Machine**, a fully on-chain game that is simple to learn yet hard to master! We designed Death-Machine to replicate the most interesting mechanics in crypto, such as the hunt for MEV and block validation, at a level of abstraction that is easy to understand and accessible to everyone.
 
-First, run the development server:
+**Death-Machine** is heavily based on the awesome game [Mumu](https://mu-mu.netlify.app/).  We use a ton of their code and patterns - and owe them a huge debt of gratitude for expanding what is possible on-chain!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Gameplay
 
- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The goal of the game is to collect stars on a 15x15 grid. Players control three spaceships and strive to design the optimal sequences before submitting their moves on-chain. Death-Machine consists of 49 turns, and each turn corresponds to a player move.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Rounds
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Rounds last 20 minutes. At the end of the 20 minutes, the player who has submitted the best sequence of moves wins.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages. Tests
+### Rewards
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Winners validate the block and are rewarded with the captured stars. The stars can be any arbitrary smart-contract such as ERC-20 or ERC-721.
 
-## Learn More
+### Block Difficulty
 
-To learn more about Next.js, take a look at the following resources:
+The block difficulty is dynamically adjusted based on the previous block scores.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Enemy Skulls
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Enemy skulls are distributed randomly on the grid. Every turn, these skulls move randomly within a set radius. We use the Xoroshiro128+ algorithm and a secret seed to generate the enemy moves.
 
-## Deploy on Vercel
+## Scalability and Access
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Death-Machine leverages zero-knowledge technology to manage scalability and access. We use the Sismo Protocol to manage player access in a privacy-preserving way, while our smart contracts are written in Cairo and deployed on Starknet.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Beta Testing
+
+For our beta testing, only players who generate a zk-proof attesting that they follow @__zkhack__ on Twitter can play!
+
+## Challenges
+
+By far the biggest source of complexity was fully integrating the software development flow across the frontend, backend, and smart-contracts. Small changes in one often had outsized impacts on the other two, especially with smart-contract inputs and outputs.
+
+Death-Machine v1 will heavily focus on building a more tightly integrated and responsive development and testing environment.
